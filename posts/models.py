@@ -13,6 +13,7 @@ class Post(models.Model):
     )
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False) #if you create a new post, it should automatically be a draft, and once its published it can go to True.
 
     def __str__(self):
         return self.title

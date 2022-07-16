@@ -13,16 +13,23 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Message Board</a>
+          <a class="navbar-brand" href="{% url 'home' %}">Seth's Blog</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="{% url 'post_list' %}">Post</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              <a class="nav-link" href="{% url 'post_list' %}">Posts</a>
               <a class="nav-link" href="{% url 'post_new' %}">Create Post</a>
               <a class="nav-link" href="{% url 'about' %}">About Us</a>
+              {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'draft_post_list' %}">Drafts</a>
+                <a class="nav=link" href="{% url 'logout' %}">Log Out</a>
+                {% else %} 
+                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                {% endif %}
             </div>
           </div>
         </div>
